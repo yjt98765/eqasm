@@ -10,7 +10,7 @@
 
 <p align="center">
   <br />
-  <img src="https://github.com/yjt98765/eqasm/blob/master/images/syntax_error_correct.png?raw=true" alt="syntax_error_correct.png" height="300px" />
+  <img src="https://github.com/yjt98765/eqasm/blob/master/resources/syntax_error_correct.png?raw=true" alt="syntax_error_correct.png" height="300px" />
   <br />
 </p>
 
@@ -18,7 +18,7 @@
 
 <p align="center">
   <br />
-  <img src="https://github.com/yjt98765/eqasm/blob/master/images/highlight.jpg?raw=true" alt="highlight.jpg" height="300px" />
+  <img src="https://github.com/yjt98765/eqasm/blob/master/resources/highlight.jpg?raw=true" alt="highlight.jpg" height="300px" />
   <br />
 </p>
 
@@ -26,7 +26,7 @@
 
 <p align="center">
   <br />
-<img src="https://github.com/yjt98765/eqasm/blob/master/images/goto_definition.png?raw=true" alt="goto_definition.png" height="200px">
+<img src="https://github.com/yjt98765/eqasm/blob/master/resources/goto_definition.png?raw=true" alt="goto_definition.png" height="200px">
   <br />
 </p>
 
