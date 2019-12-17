@@ -1,0 +1,4 @@
+out/
+node_modules/
+org.pcl.eqasm.ide-1.0.0-SNAPSHOT/
+*.vsix

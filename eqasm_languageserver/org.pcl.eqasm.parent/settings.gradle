@@ -1,0 +1,2 @@
+include 'org.pcl.eqasm'
+include 'org.pcl.eqasm.ide'

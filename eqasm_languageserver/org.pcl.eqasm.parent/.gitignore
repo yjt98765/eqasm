@@ -1,0 +1,12 @@
+bin/
+model/
+src-gen/
+test-bin/
+xtext-gen/
+xtend-gen/
+*.jar
+/.metadata/
+*.xml_gen
+build/
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar

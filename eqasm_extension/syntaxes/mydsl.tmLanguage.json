@@ -1,0 +1,263 @@
+{
+    "name": "eQASM",
+    "scopeName": "text.eqasm",
+    "fileTypes": [
+        "eqasm"
+    ],
+    "patterns": [{
+            "explanation": "Line continuation",
+            "match": "\\s*\\\\s*$",
+            "name": "constant.character.escape"
+        },
+        {
+            "match": "(.register)\\s*([rR][0-9]?)\\s*([a-zA-Z0-9_]+)",
+            "captures": {
+                "1": {
+                    "name": "markup.bold.eqasm"
+                },
+                "2": {
+                    "name": "constant.numeric.integer.eqasm"
+                },
+                "3": {
+                    "name": "string.unquoted,markup.italic"
+                }
+            }
+
+        },
+        {
+            "match": "(.def_sym)\\s*([a-zA-Z0-9_]+)\\s*(0x[0-9a-f]+|0o[0-7]+|0b[01]+)",
+            "captures": {
+                "1": {
+                    "name": "markup.bold.eqasm"
+                },
+                "2": {
+                    "name": "string.unquoted,markup.italic"
+                },
+                "3": {
+                    "name": "constant.numeric.integer.eqasm"
+                }
+            }
+
+        },
+
+        {
+            "match": "(bs)\\s*([0-7]?)",
+            "captures": {
+                "1": {
+                    "name": "keyword.control.eqasm"
+                },
+                "2": {
+                    "name": "constant.numeric.preinterval.eqasm"
+                }
+            }
+
+        },
+
+        {
+            "match": "#.*",
+            "name": "comment.line.number-sign"
+        },
+        {
+            "match": "\\b(BR)\\s*(ALWAYS|NEVER|EQ|NE|EQZ|NEZ|LT|LTZ|LE|GT|GE|GEZ|LTU|LEU|GTU|GEU|CARRY|NOTCARRY)\\s*,\\s*([a-zA-Z0-9_]+)\\b",
+            "captures": {
+                "1": {
+                    "name": "keyword.control.eqasm"
+                },
+                "2": {
+                    "name": "emphasis"
+                },
+                "3": {
+                    "name": "markup.bold"
+                }
+            }
+        },
+        {
+            "match": "\\b(BLTU|BLEU|BGTU|BGEU|BEQ|BNE|BLT|BLE|BGT|BGE)\\s*([a-zA-Z0-9]+)\\s*,\\s*([a-zA-Z0-9]+)\\s*,\\s*([a-zA-Z0-9_]+)\\b",
+            "captures": {
+                "1": {
+                    "name": "keyword.control.eqasm"
+                },
+                "2": {
+                    "name": "variable.parameter.eqasm"
+                },
+                "3": {
+                    "name": "variable.parameter.eqasm"
+                },
+                "4": {
+                    "name": "markup.bold"
+                }
+            }
+        },
+        {
+            "match": "\\b(GOTO|BRA|BRN)\\s*([a-zA-Z0-9_]+)\\b",
+            "captures": {
+                "1": {
+                    "name": "keyword.control.eqasm"
+                },
+                "2": {
+                    "name": "markup.bold"
+                }
+            }
+        },
+
+        {
+            "match": "\\b(ADD|SUBC|ADDC|SUB|OR|XOR|AND|XNOR|NAND|NOR)\\s*([a-zA-Z0-9]+)\\s*,\\s*([a-zA-Z0-9_]+),\\s*([a-zA-Z0-9_]+)\\b",
+            "captures": {
+                "1": {
+                    "name": "keyword.control.eqasm"
+                },
+                "2": {
+                    "name": "variable.parameter.eqasm"
+                },
+                "3": {
+                    "name": "variable.parameter.eqasm"
+                },
+                "4": {
+                    "name": "variable.parameter.eqasm"
+                }
+            }
+        },
+        {
+            "match": "\\b(NOT|CMP|LD|ST|SHL1|COPY|MOV|MULT2)\\s*([a-zA-Z0-9]+)\\s*,\\s*([a-zA-Z0-9_]+)\\b",
+            "captures": {
+                "1": {
+                    "name": "keyword.control.eqasm"
+                },
+                "2": {
+                    "name": "variable.parameter.eqasm"
+                },
+                "3": {
+                    "name": "variable.parameter.eqasm"
+                }
+            }
+        },
+        {
+            "match": "\\b(LDI)\\s*([a-zA-Z0-9]+)\\s*,\\s*(0x[0-9a-f]+|0o[0-7]+|0b[01]+|[0-9]+)\\b",
+            "captures": {
+                "1": {
+                    "name": "keyword.control.eqasm"
+                },
+                "2": {
+                    "name": "variable.parameter.eqasm"
+                },
+                "3": {
+                    "name": "constant.numeric.integer.eqasm"
+                }
+            }
+        },
+        {
+            "match": "\\b(LDUI)\\s*([a-zA-Z0-9]+)\\s*,\\s*(0x[0-9a-f]+|0o[0-7]+|0b[01]+|[0-9]+)\\s*,\\s*([a-zA-Z0-9_]+)\\b",
+            "captures": {
+                "1": {
+                    "name": "keyword.control.eqasm"
+                },
+                "2": {
+                    "name": "variable.parameter.eqasm"
+                },
+                "3": {
+                    "name": "constant.numeric.integer.eqasm"
+                },
+                "4": {
+                    "name": "variable.parameter.eqasm"
+                }
+            }
+        },
+        {
+            "match": "\\b(FMR)\\s*([a-zA-Z0-9]+)\\s*,\\s*([qQ][0-9]+)\\b",
+            "captures": {
+                "1": {
+                    "name": "keyword.control.eqasm"
+                },
+                "2": {
+                    "name": "variable.parameter.eqasm"
+                },
+                "3": {
+                    "name": "entity.name.type"
+                }
+            }
+        },
+        {
+            "match": "\\b(FBR)\\s*([a-zA-Z0-9]+)\\s*,\\s*([a-zA-Z0-9]+)\\b",
+            "captures": {
+                "1": {
+                    "name": "keyword.control.eqasm"
+                },
+                "2": {
+                    "name": "emphasis"
+                },
+                "3": {
+                    "name": "variable.parameter.eqasm"
+                }
+            }
+        },
+        {
+            "match": "\\b(QWAITR)\\s*([a-zA-Z0-9]+)\\b",
+            "captures": {
+                "1": {
+                    "name": "keyword.control.eqasm"
+                },
+                "2": {
+                    "name": "variable.parameter.eqasm"
+                }
+            }
+        },
+        {
+            "match": "\\b(QWAIT)\\s*([a-zA-Z0-9]+)\\b",
+            "captures": {
+                "1": {
+                    "name": "keyword.control.eqasm"
+                },
+                "2": {
+                    "name": "constant.numeric.integer.eqasm"
+                }
+            }
+        },
+
+        {
+            "match": "\\b(NOP|STOP|QNOP|CNOT|SMIS|SMIT)\\b",
+            "name": "keyword.control.eqasm"
+        },
+
+        {
+            "match": "\\b([A-Za-z0-9_]+)\\s*([sStT][0-9]+)\\b",
+            "captures": {
+                "1": {
+                    "name": "keyword.control.eqasm"
+                },
+                "2": {
+                    "name": "entity.name.type"
+                }
+            }
+        },
+        {
+            "match": "([A-Za-z0-9][A-Za-z0-9._-]*[A-Za-z0-9]|[A-Za-z0-9])(:)",
+            "captures": {
+                "1": {
+                    "name": "markup.bold"
+                },
+                "2": {
+                    "name": "comment.line.number-sign"
+                }
+            }
+        },
+        {
+            "match": "\\b([sS][0-9]+)\\b",
+            "name": "entity.name.type"
+        },
+        {
+            "match": "\\b([tT][0-9]+)\\b",
+            "name": "entity.name.type"
+
+        },
+        {
+            "match": "\\b([qQ][0-9]+)\\b",
+            "name": "entity.name.type"
+
+        },
+        {
+            "match": "\\b(0x[0-9a-f]+|0o[0-7]+|0b[01]+|[0-9]+)\\b",
+            "name": "constant.numeric.integer.eqasm"
+
+        }
+    ]
+}

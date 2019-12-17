@@ -1,0 +1,168 @@
+grammar org.pcl.eqasm.Eqasm with org.eclipse.xtext.common.Terminals
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+generate eqasm "http://www.pcl.org/eqasm/Eqasm"
+
+Program:
+	inst+=Instruction*;
+
+Instruction:
+	{Instruction} NEWLINE
+	| defi=defination  		NEWLINE
+	| rd=register_decl     NEWLINE
+	| ld=label_decl        NEWLINE
+	| stat=statement    NEWLINE 
+	| ld=label_decl stat=statement   NEWLINE  ;
+	
+NEWLINE:
+	'\n'|'\r' ;
+
+defination:
+	".def_sym" name=ID INT
+	| ".def_sym" name=ID ID;
+
+register_decl:
+	".register" type=reg name=ID;
+
+reg:
+	rreg ?= RREG 
+	| qreg ?= QREG;
+	
+R_reg:
+	r=RREG 
+	| name=[register_decl]
+;
+
+Q_reg:
+	q=QREG
+	| name=[register_decl]
+;
+
+label_decl:
+	name=ID ":";
+
+statement:
+	classic_statement
+	| (delay=INT)? inst=one_or_more_q_instrs
+	| smis
+	| smit
+	| aliases;
+	
+smis:
+	"SMIS" name=SREG "," j=s_mask
+;
+
+smit:
+	"SMIT" name=TREG "," t=t_mask
+;
+
+classic_statement:
+	{classic_statement} "NOP"
+	| {classic_statement} "STOP"
+	| "AND" r1=R_reg "," r2=R_reg "," r3=R_reg
+	| "SUB" r1=R_reg "," r2=R_reg "," r3=R_reg
+	| "ADDC" r1=R_reg "," r2=R_reg ","r3=R_reg
+	| "SUBC" r1=R_reg "," r2=R_reg "," r3=R_reg
+	| "ADD" r1=R_reg "," r2=R_reg "," r3=R_reg
+	| "OR"  r1=R_reg "," r2=R_reg "," r3=R_reg
+	| "XOR" r1=R_reg "," r2=R_reg "," r3=R_reg
+	| "NOT" r1=R_reg "," r2=R_reg
+	| "CMP" r1=R_reg "," r2=R_reg
+	| "LDI" r1=R_reg "," i=imm
+	| "LDUI" r1=R_reg "," i=imm
+	| "FMR" r1=R_reg "," q2=Q_reg
+	| "BR" cond "," a=offset_to_label
+	| "FBR" cond "," r2=R_reg
+	| "QWAIT" imm
+	| "QWAITR" r1=R_reg
+;
+
+aliases:
+	"SHL1" r1=R_reg "," r2=R_reg
+	| "NAND" r1=R_reg "," r2=R_reg "," r3=R_reg
+	| "NOR" r1=R_reg "," r2=R_reg "," r3=R_reg
+	|"XNOR"  r1=R_reg "," r2=R_reg "," r3=R_reg
+	|"BRA" a=offset_to_label
+	|"GOTO" a=offset_to_label
+	|"BRN" a=offset_to_label
+	|"BEQ" r1=R_reg "," r2=R_reg "," a=offset_to_label
+	|"BNE" r1=R_reg"," r2=R_reg "," a=offset_to_label
+	|"BLT" r1=R_reg "," r2=R_reg "," a=offset_to_label 
+	|"BLE" r1=R_reg "," r2=R_reg "," a=offset_to_label 
+	|"BGT" r1=R_reg "," r2=R_reg "," a=offset_to_label 
+	|"BGE" r1=R_reg "," r2=R_reg "," a=offset_to_label
+	|"BLTU" r1=R_reg "," r2=R_reg "," a=offset_to_label 
+	|"BLEU" r1=R_reg "," r2=R_reg "," a=offset_to_label 
+	|"BGTU" r1=R_reg "," r2=R_reg "," a=offset_to_label 
+	|"BGEU" r1=R_reg "," r2=R_reg "," a=offset_to_label 
+	|"COPY" r1=R_reg "," r2=R_reg
+	|"MOV" r1=R_reg "," i=imm
+	|"MULT2" r1=R_reg "," r2=R_reg
+;
+
+cond:
+	"ALWAYS"
+	  | "NEVER"
+	  | "EQ"
+	  | "NE"
+	  | "LT"
+	  | "LE"
+	  | "GT"
+	  | "GE"
+	  | "LTU"
+	  | "LEU"
+	  | "GTU"
+	  | "GEU"
+	  | "LTZ"
+	  | "GEZ"
+	  | "EQZ" 
+	  | "NEZ"
+	  | "CARRY"
+	  | "NOTCARRY"
+	;
+
+
+offset_to_label:
+	{offset_to_label} INT | name=[label_decl]
+	;
+
+imm:
+	{imm} INT
+	| name=[defination]
+;
+
+t_mask:
+	"{" "(" k1=INT "," k2=INT ")" ("," "(" s1+=INT "," s2+=INT ")")* "}";
+
+s_mask:
+	"{" k=INT ("," s+=INT)* "}" ;
+
+q_instr:
+	{q_instr} "QNOP"
+	| ID sg=[smis|SREG]
+	| ID tg=[smit|TREG];
+
+one_or_more_q_instrs:
+ q_instr ("|" insts+=q_instr)*;
+
+terminal RREG:
+	('r' | 'R') ('0'..'9')+;
+
+terminal QREG:
+	('q' | 'Q') ('0'..'9')+;
+
+terminal SREG:
+	('s' | 'S') ('0'..'9')+;
+
+terminal TREG:
+	('t' | 'T') ('0'..'9')+;
+	
+@Override terminal INT returns ecore::EInt:
+	"0x"('0'..'9' | 'a'..'f' | 'A'..'F')* | "0b"('0'|'1')* | ('0' .. '9')+ ;
+
+@Override terminal SL_COMMENT: 
+    '#' !('\n'|'\r')* ('\r'? '\n')?;
+
+@Override terminal WS: 
+    (' '|'\t')+;
