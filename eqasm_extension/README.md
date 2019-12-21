@@ -4,6 +4,8 @@
 
 [executable QASM (eQASM)](https://arxiv.org/abs/1808.02449v3) is a Quantum Instruction Set Architecture (QISA) used to describe quantum applications at a low level. This extension provides support for eQASM in [Visual Studio Code](https://code.visualstudio.com/).
 
+[Java](https://java.com/en/download/) is required to run the language server contained in this extension. The language server provides editor services such as syntax verification and label declaration peeking.
+
 ## Features
 
 - Syntax verification: report errors and warnings automatically.
