@@ -10,7 +10,7 @@
             "name": "constant.character.escape"
         },
         {
-            "match": "(.register)\\s*([rR][0-9]?)\\s*([a-zA-Z0-9_]+)",
+            "match": "(?i)(.register)\\s*([rR][0-9]?)\\s*([a-zA-Z0-9_]+)",
             "captures": {
                 "1": {
                     "name": "markup.bold.eqasm"
@@ -25,7 +25,7 @@
 
         },
         {
-            "match": "(.def_sym)\\s*([a-zA-Z0-9_]+)\\s*(0x[0-9a-f]+|0o[0-7]+|0b[01]+)",
+            "match": "(?i)(.def_sym)\\s*([a-zA-Z0-9_]+)\\s*(0x[0-9a-f]+|0o[0-7]+|0b[01]+)",
             "captures": {
                 "1": {
                     "name": "markup.bold.eqasm"
@@ -41,7 +41,7 @@
         },
 
         {
-            "match": "(bs)\\s*([0-7]?)",
+            "match": "(?i)(bs)\\s*([0-7]?)",
             "captures": {
                 "1": {
                     "name": "keyword.control.eqasm"
@@ -58,7 +58,7 @@
             "name": "comment.line.number-sign"
         },
         {
-            "match": "\\b(BR)\\s*(ALWAYS|NEVER|EQ|NE|EQZ|NEZ|LT|LTZ|LE|GT|GE|GEZ|LTU|LEU|GTU|GEU|CARRY|NOTCARRY)\\s*,\\s*([a-zA-Z0-9_]+)\\b",
+            "match": "(?i)\\b(BR)\\s*(ALWAYS|NEVER|EQ|NE|EQZ|NEZ|LT|LTZ|LE|GT|GE|GEZ|LTU|LEU|GTU|GEU|CARRY|NOTCARRY)\\s*,\\s*([a-zA-Z0-9_]+)\\b",
             "captures": {
                 "1": {
                     "name": "keyword.control.eqasm"
@@ -72,7 +72,7 @@
             }
         },
         {
-            "match": "\\b(BLTU|BLEU|BGTU|BGEU|BEQ|BNE|BLT|BLE|BGT|BGE)\\s*([a-zA-Z0-9]+)\\s*,\\s*([a-zA-Z0-9]+)\\s*,\\s*([a-zA-Z0-9_]+)\\b",
+            "match": "(?i)\\b(BLTU|BLEU|BGTU|BGEU|BEQ|BNE|BLT|BLE|BGT|BGE)\\s*([a-zA-Z0-9]+)\\s*,\\s*([a-zA-Z0-9]+)\\s*,\\s*([a-zA-Z0-9_]+)\\b",
             "captures": {
                 "1": {
                     "name": "keyword.control.eqasm"
@@ -89,7 +89,7 @@
             }
         },
         {
-            "match": "\\b(LB|LW|SB|SW)\\s*([a-zA-Z0-9]+)\\s*,\\s*([a-zA-Z0-9]+)\\s*,\\s*([a-zA-Z0-9_]+)\\b",
+            "match": "(?i)\\b(LB|LW|SB|SW)\\s*([a-zA-Z0-9]+)\\s*,\\s*([a-zA-Z0-9]+)\\s*,\\s*([a-zA-Z0-9_]+)\\b",
             "captures": {
                 "1": {
                     "name": "keyword.control.eqasm"
@@ -103,7 +103,7 @@
             }
         },
         {
-            "match": "\\b(GOTO|BRA|BRN)\\s*([a-zA-Z0-9_]+)\\b",
+            "match": "(?i)\\b(GOTO|BRA|BRN)\\s*([a-zA-Z0-9_]+)\\b",
             "captures": {
                 "1": {
                     "name": "keyword.control.eqasm"
@@ -115,7 +115,7 @@
         },
 
         {
-            "match": "\\b(ADD|OR|SLT|SUBC|ADDC|SUB|OR|XOR|DIV|REM|MUL|AND|XNOR|NAND|NOR)\\s*([a-zA-Z0-9]+)\\s*,\\s*([a-zA-Z0-9_]+),\\s*([a-zA-Z0-9_]+)\\b",
+            "match": "(?i)\\b(ADD|OR|SLT|SUBC|ADDC|SUB|OR|XOR|DIV|REM|MUL|AND|XNOR|NAND|NOR)\\s*([a-zA-Z0-9]+)\\s*,\\s*([a-zA-Z0-9_]+),\\s*([a-zA-Z0-9_]+)\\b",
             "captures": {
                 "1": {
                     "name": "keyword.control.eqasm"
@@ -132,7 +132,7 @@
             }
         },
         {
-            "match": "\\b(ADDI|SLTIU)\\s*([a-zA-Z0-9]+)\\s*,\\s*([a-zA-Z0-9_]+),\\s*([a-zA-Z0-9_]+)\\b",
+            "match": "(?i)\\b(ADDI|SLTIU)\\s*([a-zA-Z0-9]+)\\s*,\\s*([a-zA-Z0-9_]+),\\s*([a-zA-Z0-9_]+)\\b",
             "captures": {
                 "1": {
                     "name": "keyword.control.eqasm"
@@ -149,7 +149,7 @@
             }
         },
         {
-            "match": "\\b(NOT|CMP|LD|ST|SHL1|COPY|MOV|MULT2)\\s*([a-zA-Z0-9]+)\\s*,\\s*([a-zA-Z0-9_]+)\\b",
+            "match": "(?i)\\b(NOT|CMP|LD|ST|SHL1|COPY|MOV|MULT2)\\s*([a-zA-Z0-9]+)\\s*,\\s*([a-zA-Z0-9_]+)\\b",
             "captures": {
                 "1": {
                     "name": "keyword.control.eqasm"
@@ -163,7 +163,7 @@
             }
         },
         {
-            "match": "\\b(LDI)\\s*([a-zA-Z0-9]+)\\s*,\\s*(0x[0-9a-f]+|0o[0-7]+|0b[01]+|[0-9]+)\\b",
+            "match": "(?i)\\b(LDI)\\s*([a-zA-Z0-9]+)\\s*,\\s*(0x[0-9a-f]+|0o[0-7]+|0b[01]+|[0-9]+)\\b",
             "captures": {
                 "1": {
                     "name": "keyword.control.eqasm"
@@ -177,7 +177,7 @@
             }
         },
         {
-            "match": "\\b(LDUI)\\s*([a-zA-Z0-9]+)\\s*,\\s*(0x[0-9a-f]+|0o[0-7]+|0b[01]+|[0-9]+)\\s*,\\s*([a-zA-Z0-9_]+)\\b",
+            "match": "(?i)\\b(LDUI)\\s*([a-zA-Z0-9]+)\\s*,\\s*(0x[0-9a-f]+|0o[0-7]+|0b[01]+|[0-9]+)\\s*,\\s*([a-zA-Z0-9_]+)\\b",
             "captures": {
                 "1": {
                     "name": "keyword.control.eqasm"
@@ -194,7 +194,7 @@
             }
         },
         {
-            "match": "\\b(FMR)\\s*([a-zA-Z0-9]+)\\s*,\\s*([qQ][0-9]+)\\b",
+            "match": "(?i)\\b(FMR)\\s*([a-zA-Z0-9]+)\\s*,\\s*([qQ][0-9]+)\\b",
             "captures": {
                 "1": {
                     "name": "keyword.control.eqasm"
@@ -208,7 +208,7 @@
             }
         },
         {
-            "match": "\\b(FBR)\\s*([a-zA-Z0-9]+)\\s*,\\s*([a-zA-Z0-9]+)\\b",
+            "match": "(?i)\\b(FBR)\\s*([a-zA-Z0-9]+)\\s*,\\s*([a-zA-Z0-9]+)\\b",
             "captures": {
                 "1": {
                     "name": "keyword.control.eqasm"
@@ -222,7 +222,7 @@
             }
         },
         {
-            "match": "\\b(QWAITR)\\s*([a-zA-Z0-9]+)\\b",
+            "match": "(?i)\\b(QWAITR)\\s*([a-zA-Z0-9]+)\\b",
             "captures": {
                 "1": {
                     "name": "keyword.control.eqasm"
@@ -233,7 +233,7 @@
             }
         },
         {
-            "match": "\\b(QWAIT)\\s*([a-zA-Z0-9]+)\\b",
+            "match": "(?i)\\b(QWAIT)\\s*([a-zA-Z0-9]+)\\b",
             "captures": {
                 "1": {
                     "name": "keyword.control.eqasm"
@@ -244,11 +244,11 @@
             }
         },
         {
-            "match": "\\b(NOP|STOP|QNOP|CNOT)\\b",
+            "match": "(?i)\\b(NOP|STOP|QNOP|CNOT)\\b",
             "name": "keyword.control.eqasm"
         },
         {
-            "match": "\\b(SMIS|SMIT)\\s*([sStT][0-9]+)\\b",
+            "match": "(?i)\\b(SMIS|SMIT)\\s*([sStT][0-9]+)\\b",
             "captures": {
                 "1": {
                     "name": "keyword.control.eqasm"
@@ -259,7 +259,7 @@
             }
         },
         {
-            "match": "\\b([A-Za-z0-9_]+)\\s*([sStT][0-9]+)\\b",
+            "match": "(?i)\\b([A-Za-z0-9_]+)\\s*([sStT][0-9]+)\\b",
             "captures": {
                 "1": {
                     "name": "string.jade"
@@ -270,7 +270,7 @@
             }
         },
         {
-            "match": "([A-Za-z0-9][A-Za-z0-9._-]*[A-Za-z0-9]|[A-Za-z0-9])(:)",
+            "match": "(?i)([A-Za-z0-9][A-Za-z0-9._-]*[A-Za-z0-9]|[A-Za-z0-9])(:)",
             "captures": {
                 "1": {
                     "name": "markup.bold"
@@ -281,21 +281,21 @@
             }
         },
         {
-            "match": "\\b([sS][0-9]+)\\b",
+            "match": "(?i)\\b([sS][0-9]+)\\b",
             "name": "entity.name.type"
         },
         {
-            "match": "\\b([tT][0-9]+)\\b",
-            "name": "entity.name.type"
-
-        },
-        {
-            "match": "\\b([qQ][0-9]+)\\b",
+            "match": "(?i)\\b([tT][0-9]+)\\b",
             "name": "entity.name.type"
 
         },
         {
-            "match": "\\b(0x[0-9a-f]+|0o[0-7]+|0b[01]+|[0-9]+)\\b",
+            "match": "(?i)\\b([qQ][0-9]+)\\b",
+            "name": "entity.name.type"
+
+        },
+        {
+            "match": "(?i)\\b(0x[0-9a-f]+|0o[0-7]+|0b[01]+|[0-9]+)\\b",
             "name": "constant.numeric.integer.eqasm"
 
         }
