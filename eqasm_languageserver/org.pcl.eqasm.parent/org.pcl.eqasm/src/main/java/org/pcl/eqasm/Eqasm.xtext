@@ -44,7 +44,7 @@ label_decl:
 
 statement:
 	classic_statement
-	| (delay=INT)? inst=one_or_more_q_instrs
+	| (delay=INT ",")? inst=one_or_more_q_instrs
 	| smis
 	| smit
 	| aliases;
@@ -65,12 +65,19 @@ classic_statement:
 	| "ADDC" r1=R_reg "," r2=R_reg ","r3=R_reg
 	| "SUBC" r1=R_reg "," r2=R_reg "," r3=R_reg
 	| "ADD" r1=R_reg "," r2=R_reg "," r3=R_reg
+	| "ADDI" r1=R_reg "," r2=R_reg "," i=imm
+	| "MUL" r1=R_reg "," r2=R_reg "," r3=R_reg
+	| "DIV" r1=R_reg "," r2=R_reg "," r3=R_reg
 	| "OR"  r1=R_reg "," r2=R_reg "," r3=R_reg
 	| "XOR" r1=R_reg "," r2=R_reg "," r3=R_reg
 	| "NOT" r1=R_reg "," r2=R_reg
 	| "CMP" r1=R_reg "," r2=R_reg
 	| "LDI" r1=R_reg "," i=imm
 	| "LDUI" r1=R_reg "," i=imm
+	| "SW" r1=R_reg "," i=imm "(" r2=R_reg ")"
+	| "SB" r1=R_reg "," i=imm "(" r2=R_reg ")"
+	| "RW" r1=R_reg "," i=imm "(" r2=R_reg ")"
+	| "RB" r1=R_reg "," i=imm "(" r2=R_reg ")"
 	| "FMR" r1=R_reg "," q2=Q_reg
 	| "BR" cond "," a=offset_to_label
 	| "FBR" cond "," r2=R_reg

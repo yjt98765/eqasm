@@ -27,6 +27,11 @@ Workflow {
 			name = "org.pcl.eqasm.Eqasm"
 			fileExtensions = "eqasm,qisa"
 
+			parserGenerator = {
+                options = {
+                    ignoreCase = true
+                }
+            }
 			serializer = {
 				generateStub = false
 			}
