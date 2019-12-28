@@ -76,8 +76,8 @@ classic_statement:
 	| "LDUI" r1=R_reg "," i=imm
 	| "SW" r1=R_reg "," i=imm "(" r2=R_reg ")"
 	| "SB" r1=R_reg "," i=imm "(" r2=R_reg ")"
-	| "RW" r1=R_reg "," i=imm "(" r2=R_reg ")"
-	| "RB" r1=R_reg "," i=imm "(" r2=R_reg ")"
+	| "LW" r1=R_reg "," i=imm "(" r2=R_reg ")"
+	| "LB" r1=R_reg "," i=imm "(" r2=R_reg ")"
 	| "FMR" r1=R_reg "," q2=Q_reg
 	| "BR" cond "," a=offset_to_label
 	| "FBR" cond "," r2=R_reg

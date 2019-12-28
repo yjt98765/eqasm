@@ -89,7 +89,7 @@
             }
         },
         {
-            "match": "(?i)\\b(LB|LW|SB|SW)\\s*([a-zA-Z0-9]+)\\s*,\\s*([a-zA-Z0-9]+)\\s*,\\s*([a-zA-Z0-9_]+)\\b",
+            "match": "(?i)\\b(SB|SW|LB|LW)\\s*(r[a-zA-Z0-9]+)\\s*,\\s*(0x[0-9a-f]+|0o[0-7]+|0b[01]+|[0-9]+)\\s*\\((r[a-zA-Z0-9]+)\\b",
             "captures": {
                 "1": {
                     "name": "keyword.control.eqasm"
@@ -99,6 +99,9 @@
                 },
                 "3": {
                     "name": "markup.bold"
+                },
+                "4": {
+                    "name": "variable.parameter.eqasm"
                 }
             }
         },
@@ -113,7 +116,6 @@
                 }
             }
         },
-
         {
             "match": "(?i)\\b(ADD|OR|SLT|SUBC|ADDC|SUB|OR|XOR|DIV|REM|MUL|AND|XNOR|NAND|NOR)\\s*([a-zA-Z0-9]+)\\s*,\\s*([a-zA-Z0-9_]+),\\s*([a-zA-Z0-9_]+)\\b",
             "captures": {
@@ -132,7 +134,7 @@
             }
         },
         {
-            "match": "(?i)\\b(ADDI|SLTIU)\\s*([a-zA-Z0-9]+)\\s*,\\s*([a-zA-Z0-9_]+),\\s*([a-zA-Z0-9_]+)\\b",
+            "match": "(?i)\\b(ADDI|SLTIU)\\s*([a-zA-Z0-9]+)\\s*,\\s*([a-zA-Z0-9_]+),\\s*(0x[0-9a-f]+|0o[0-7]+|0b[01]+|[0-9]+)\\b",
             "captures": {
                 "1": {
                     "name": "keyword.control.eqasm"
