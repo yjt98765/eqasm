@@ -4,8 +4,10 @@ import * as path from 'path';
 import * as os from 'os';
 
 import { Trace } from 'vscode-jsonrpc';
-import { commands, window, workspace, ExtensionContext, Uri } from 'vscode';
+import { workspace, ExtensionContext } from 'vscode';
 import { LanguageClient, LanguageClientOptions, ServerOptions } from 'vscode-languageclient';
+
+let client: LanguageClient;
 
 export function activate(context: ExtensionContext) {
     // The server is a locally installed in src/org.pcl.eqasm.ide-1.0.0-SNAPSHOT
@@ -13,8 +15,7 @@ export function activate(context: ExtensionContext) {
     let script = context.asAbsolutePath(path.join('src', 'org.pcl.eqasm.ide-1.0.0-SNAPSHOT', 'bin', launcher));
 
     let serverOptions: ServerOptions = {
-        run: { command: script },
-        debug: { command: script, args: [], options: { env: createDebugEnv() } }
+        command: script
     };
 
     let clientOptions: LanguageClientOptions = {
@@ -25,31 +26,16 @@ export function activate(context: ExtensionContext) {
     };
 
     // Create the language client and start the client.
-    let lc = new LanguageClient('Xtext Server', serverOptions, clientOptions);
-
-    var disposable2 = commands.registerCommand("eqasm.a.proxy", async () => {
-        let activeEditor = window.activeTextEditor;
-        if (!activeEditor || !activeEditor.document || activeEditor.document.languageId !== 'eqasm') {
-            return;
-        }
-
-        if (activeEditor.document.uri instanceof Uri) {
-            commands.executeCommand("eqasm.a", activeEditor.document.uri.toString());
-        }
-    })
-    context.subscriptions.push(disposable2);
+    client = new LanguageClient('eqasmServer', 'eQASM Server', serverOptions, clientOptions);
 
     // enable tracing (.Off, .Messages, Verbose)
-    lc.trace = Trace.Verbose;
-    let disposable = lc.start();
-
-    // Push the disposable to the context's subscriptions so that the
-    // client can be deactivated on extension deactivation
-    context.subscriptions.push(disposable);
+    client.trace = Trace.Verbose;
+    client.start();
 }
 
-function createDebugEnv() {
-    return Object.assign({
-        JAVA_OPTS: "-Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=8000,suspend=n,quiet=y"
-    }, process.env)
+export function deactivate(): Thenable<void> | undefined {
+	if (!client) {
+		return undefined;
+	}
+	return client.stop();
 }

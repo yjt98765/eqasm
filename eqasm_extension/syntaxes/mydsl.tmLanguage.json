@@ -104,7 +104,6 @@
                 }
             }
         },
-
         {
             "match": "(?i)\\b(GOTO|BRA|BRN)\\b\\s*([\\w\\d_-]+)",
             "captures": {
@@ -116,7 +115,6 @@
                 }
             }
         },
-
         {
             "match": "(?i)\\b(ADD|OR|SLT|SUBC|ADDC|SUB|OR|XOR|DIV|REM|MUL|AND|XNOR|NAND|NOR)\\b\\s+([\\w\\d_-]+)\\s*,\\s*([\\w\\d_-]+),\\s*([\\w\\d_-]+)",
             "captures": {
