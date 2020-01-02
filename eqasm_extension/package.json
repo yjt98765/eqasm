@@ -2,12 +2,12 @@
     "name": "eQASM",
     "displayName": "eQASM",
     "description": "eQASM language support for Visual Studio Code",
-    "version": "0.1.1",
-<<<<<<< HEAD
+    "version": "0.1.3",
+
     "publisher": "eQASM-extension",
-=======
+
     "publisher": "eQASM",
->>>>>>> 93e612636ca0bcafd1265669ef8109fc3c6c2bb1
+
     "icon": "images/eqasm.jpg",
     "license": "EPL-1.0",
     "repository": {
