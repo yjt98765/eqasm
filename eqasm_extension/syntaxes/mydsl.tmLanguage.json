@@ -104,6 +104,7 @@
                 }
             }
         },
+
         {
             "match": "(?i)\\b(GOTO|BRA|BRN)\\b\\s*([\\w\\d_-]+)",
             "captures": {
@@ -115,6 +116,7 @@
                 }
             }
         },
+
         {
             "match": "(?i)\\b(ADD|OR|SLT|SUBC|ADDC|SUB|OR|XOR|DIV|REM|MUL|AND|XNOR|NAND|NOR)\\b\\s+([\\w\\d_-]+)\\s*,\\s*([\\w\\d_-]+),\\s*([\\w\\d_-]+)",
             "captures": {
@@ -260,7 +262,7 @@
             }
         },
         {
-            "match": "(?i)\\b([\\w\\d_-]+)\\s+([st][0-9]+)\\b",
+            "match": "(?i)\\b([\\w\\d_-]+)\\b\\s+\\b([st][0-9]+)\\b",
             "captures": {
                 "1": {
                     "name": "string.jade"
@@ -271,7 +273,7 @@
             }
         },
         {
-            "match": "(?i)([\\d\\w_-]+)(:)",
+            "match": "(?i)\\b([\\d\\w_-]+)\\b(:)",
             "captures": {
                 "1": {
                     "name": "markup.bold"
